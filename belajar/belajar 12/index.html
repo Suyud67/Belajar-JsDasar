@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch Javascript</title>
+  </head>
+  <body>
+    <!-- <img src="" id="img" /> -->
+
+    <script>
+      // fetch img from local storage
+      // fetch('../resize/img1.jpg')
+      //   .then((res) => res.blob())
+      //   .then((img) => {
+      //     document.getElementById('img').src = URL.createObjectURL(img);
+      //   })
+      //   .catch((err) => console.error(err));
+
+      // fetch more img from local storage
+      let images = ['../resize/img1.jpg', '../resize/img3.jpg', '../resize/img2.jpg'];
+
+      for (let img of images) {
+        fetch(img)
+          .then((res) => res.blob())
+          .then((img) => {
+            let tagImg = document.createElement('img');
+            tagImg.src = URL.createObjectURL(img);
+            document.body.appendChild(tagImg);
+          });
+      }
+    </script>
+  </body>
+</html>
